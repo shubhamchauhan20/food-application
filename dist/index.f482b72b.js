@@ -32340,7 +32340,7 @@ const Body = ()=>{
     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "p-2 my-5 bg-cyan-50 shadow-md",
+                className: "p-2 my-5 bg-cyan-500 shadow-md",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                         value: searchText,
@@ -32354,7 +32354,7 @@ const Body = ()=>{
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        className: "p-2 m-5 hover:bg-cyan-400 shadow-sm bg-cyan-100 border-2 border-solid rounded-md",
+                        className: "p-2 m-5 hover:bg-cyan-400 text-lg shadow-sm bg-cyan-100 border-2 border-solid rounded-md",
                         onClick: ()=>{
                             setFilterRestaurants(filterData(searchText, allRestaurants));
                         },
@@ -32371,7 +32371,7 @@ const Body = ()=>{
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: " flex flex-wrap h-full",
+                className: " flex flex-wrap h-full rounded-bl-3xl",
                 children: filterRestaurants.map((restaurant)=>{
                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/restaurant/" + restaurant.data.id,
@@ -32427,10 +32427,11 @@ var _constants = require("../Constants");
 var _indexCss = require("./index.css");
 const RestrountCard = ({ name , cuisines , cloudinaryImageId , lastMileTravelString , deliveryTime , costForTwoString  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "w-56 p-2 m-2 align-middle bg-cyan-100 shadow-lg ",
+        className: "w-56 p-2 m-2 align-middle shadow-lg rounded-bl-3xl ",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                src: (0, _constants.imageCDN) + cloudinaryImageId
+                src: (0, _constants.imageCDN) + cloudinaryImageId,
+                className: "rounded-lg"
             }, void 0, false, {
                 fileName: "src/components/RestrauntCard.js",
                 lineNumber: 9,
