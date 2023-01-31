@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.shimmer-card {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: lightgray;
+    margin: 20px;
+}
+
+* body {
+    background-color: rgb(236 254 255);
+}
