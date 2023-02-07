@@ -1,8 +1,6 @@
 
 import React, { Children, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-// import './components/index.css';
-// import 'index.css';
 import HeaderComponent from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
@@ -12,9 +10,10 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestrauntMenu from "./components/RestrauntMenu";
-// import Profile from "./Profile";
 import ProfileClass from "./components/ProfileClass";
-// import Instamart from "./components/Instamart";
+import UserContext from "./utils/UserContext";
+import Cart from "./components/Cart";
+
 
 // const Instamart= lazy(()=> import("./components/Instamart"));
 const Instamart = React.lazy(() => import("./components/Instamart"));
@@ -27,13 +26,16 @@ const Footer = () => {
 }
 
 const AppLayout = () => {
+    const [user, setUser] =  React.useState({
+        name: "Shubham Chauhan",
+        email: "shubhamcahuhan55t@gmail.com"
+    })
     return (
-        <React.Fragment>
+        <UserContext.Provider value={{user: user, setUser: setUser}}>
             <HeaderComponent />
             <Outlet />
             <Footer />
-            {/* <Shimmer /> */}
-        </React.Fragment>
+        </UserContext.Provider>
     )
 }
 
@@ -58,10 +60,6 @@ const appRouter= createBrowserRouter([
                 element: <Body />
             },
             {
-                path: "/contact",
-                element: <Contact />
-            },
-            {
                 path: "/restaurant/:id",
                 element: <RestrauntMenu />
             },
@@ -69,6 +67,15 @@ const appRouter= createBrowserRouter([
                 path: "/instamart",
                 element: <Suspense><Instamart /></Suspense>
             },
+            {
+                path: "/contact",
+                element: <Contact />
+            },
+            {
+                path:"/cart",
+                element: <Cart />
+            }
+            
         ]
     },
 

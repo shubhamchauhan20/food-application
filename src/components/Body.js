@@ -4,6 +4,7 @@ import { restrautList } from "../Constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 
 function filterData(searchText, restaurants) {
@@ -17,6 +18,9 @@ const Body = () => {
     const [searchText, setSearchText] = React.useState([]);
      const [allRestaurants, setAllRestaurants] = React.useState("");
      const [filterRestaurants, setFilterRestaurants] = React.useState("");
+    
+     const { user, setUser } = React.useContext(UserContext);
+
     
     // create own hooks
     // const allRestaurants= useRestaurantData();
@@ -46,9 +50,11 @@ const Body = () => {
     // console.log(allRestaurants, filterRestaurants);
     // if(!allRestaurants) return console.log("shimmer", allRestaurants,filterRestaurants );;
 
-    if(filterRestaurants?.length===0){
+    if(allRestaurants?.length  && filterRestaurants?.length===0){
         return <h1>No Restraunt match your filter!!</h1>
     }
+
+    //allRestaurants?.length && ()
 
     return (allRestaurants.length===0)? <Shimmer /> : (
         <>
@@ -57,6 +63,8 @@ const Body = () => {
                 <button className="p-2 m-5 hover:bg-cyan-400 text-lg shadow-sm bg-cyan-100 border-2 border-solid rounded-md" onClick={()=>{
                     setFilterRestaurants(filterData(searchText, allRestaurants))
                 }}>Search</button>
+                {/* <input onChange={(e)=> setUser({...user, name: e.target.value})} value={user.name} />
+                <input onChange={(e)=> setUser({...user, email: e.target.value})} value={user.email} /> */}
             </div>
              <div className=" flex flex-wrap h-full rounded-bl-3xl">
              {filterRestaurants.map((restaurant)=>{
