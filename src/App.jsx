@@ -13,6 +13,8 @@ import RestrauntMenu from "./components/RestrauntMenu";
 import ProfileClass from "./components/ProfileClass";
 import UserContext from "./utils/UserContext";
 import Cart from "./components/Cart";
+import { Provider } from "react-redux";
+import Store from "./utils/Store";
 
 
 // const Instamart= lazy(()=> import("./components/Instamart"));
@@ -31,11 +33,13 @@ const AppLayout = () => {
         email: "shubhamcahuhan55t@gmail.com"
     })
     return (
+        <Provider store={Store}>
         <UserContext.Provider value={{user: user, setUser: setUser}}>
             <HeaderComponent />
             <Outlet />
             <Footer />
         </UserContext.Provider>
+        </Provider>
     )
 }
 

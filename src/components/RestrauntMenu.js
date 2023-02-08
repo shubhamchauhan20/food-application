@@ -3,6 +3,8 @@ import React from "react";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
 import { imageCDN } from "../Constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice";
 
 
 const useParams = require("react-router-dom").useParams;
@@ -14,10 +16,18 @@ const RestrauntMenu =() => {
     // const [restaurant, setRestaurant] = React.useState(null);
     const restaurant= useRestaurant(id);
 
+    const dispatch= useDispatch();
+    const addFoodItem= (item)=> {
+        dispatch(addItem(item))
+    }
+    // const handlerAddItems =() =>{
+    //     dispatch(addItem("Grapes"))
+    // }
+
     if(!restaurant) return null;
 
     return (!restaurant) ? <Shimmer /> : (
-        <div className="menu">
+        <div className="flex">
             <div>
                 <h1>Restaurant id: {id}</h1>
                 <h2>{restaurant.name}</h2>
@@ -28,11 +38,12 @@ const RestrauntMenu =() => {
                 <h3>{restaurant.costForTwoMsg}</h3>
                 {/* {console.log((name))} */}
             </div>
-            <div>
+            {/* <div><button className="bg-green-200" onClick={()=> handlerAddItems()}>add</button></div> */}
+            <div className="flex">
                 <h1>Menu</h1>
                 <ul>
                     {Object.values(restaurant?.menu?.items).map((item) => (
-                   <li key={item.id}>{item.name}</li>
+                   <li key={item.id}>{item.name} - {<button className="bg-green-200" onClick={()=>addFoodItem(item)}>add</button>}</li>
           ))}
 
           {/* {Object.values(restaurant?.menu?.items || {restaurant?.menu?.items})} */}
