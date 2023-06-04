@@ -9,9 +9,7 @@ import UserContext from "../utils/UserContext";
 
 function filterData(searchText, restaurants) {
     return restaurants.filter((restaurant)=> restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
-    //  return console.log("Filter");
-
-    
+    //  return console.log("Filter");   
 }
 
 const Body = () => {
@@ -27,8 +25,6 @@ const Body = () => {
     // const filterRestaurants= useRestaurantData();
 
     // create own hook
-
-
 
     React.useEffect(()=>{
         getRestaurent();

@@ -3,6 +3,7 @@
 import ProfileClass from "./ProfileClass";
 import React from "react";
 import UserContext from "../utils/UserContext";
+import Shimmer from "./Shimmer";
 
 // const About=() => {
 //     return (
@@ -35,6 +36,7 @@ class About extends React.Component {
                 <UserContext.Consumer>
                     {({user})=> <h4 className="text-4xl text-red-500">{user.name}- {user.email}</h4>}
                 </UserContext.Consumer>
+                <Shimmer />
             </div>
         )
     }
